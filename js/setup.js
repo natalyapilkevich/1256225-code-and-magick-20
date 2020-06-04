@@ -18,28 +18,15 @@ var randomData = function (array) {
   return array[Math.floor(Math.random() * array.length)];
 };
 
-var wizards = [
-  {
+var wizards = [];
+for (var i = 0; i < 4; i++) {
+  var eachWizard = {
     name: randomData(WIZARD_FIRST_NAMES) + ' ' + randomData(WIZARD_LAST_NAMES),
     coatColor: randomData(WIZARD_COAT_COLOR),
     eyesColor: randomData(WIZARD_EYES_COLOR)
-  },
-  {
-    name: randomData(WIZARD_FIRST_NAMES) + ' ' + randomData(WIZARD_LAST_NAMES),
-    coatColor: randomData(WIZARD_COAT_COLOR),
-    eyesColor: randomData(WIZARD_EYES_COLOR)
-  },
-  {
-    name: randomData(WIZARD_FIRST_NAMES) + ' ' + randomData(WIZARD_LAST_NAMES),
-    coatColor: randomData(WIZARD_COAT_COLOR),
-    eyesColor: randomData(WIZARD_EYES_COLOR)
-  },
-  {
-    name: randomData(WIZARD_FIRST_NAMES) + ' ' + randomData(WIZARD_LAST_NAMES),
-    coatColor: randomData(WIZARD_COAT_COLOR),
-    eyesColor: randomData(WIZARD_EYES_COLOR)
-  }
-];
+  };
+  wizards.push(eachWizard);
+}
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -51,7 +38,7 @@ var renderWizard = function (wizard) {
 };
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < wizards.length; i++) {
+for (i = 0; i < wizards.length; i++) {
   fragment.appendChild(renderWizard(wizards[i]));
 }
 similarListElement.appendChild(fragment);
