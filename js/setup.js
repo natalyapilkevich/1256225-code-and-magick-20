@@ -95,12 +95,10 @@ setupClose.addEventListener('keydown', function (evt) {
 
 // Валидация формы создания персонажа
 
-'use strict';
-
 var MIN_NAME_LENGTH = 2;
 var MAX_NAME_LENGTH = 25;
 
-userNameInput.addEventListener('invalid', function (evt) {
+userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
   } else if (userNameInput.validity.tooLong) {
@@ -112,28 +110,27 @@ userNameInput.addEventListener('invalid', function (evt) {
   }
 });
 
-userNameInput.addEventListener('input', function (evt) {
+userNameInput.addEventListener('input', function () {
   var valueLength = userNameInput.value.length;
 
   if (valueLength < MIN_NAME_LENGTH) {
-    userNameInput.setCustomValidity('Ещё ' + (MIN_NAME_LENGTH - valueLength) +' симв.');
+    userNameInput.setCustomValidity('Ещё ' + (MIN_NAME_LENGTH - valueLength) + ' симв.');
   } else if (valueLength > MAX_NAME_LENGTH) {
-    userNameInput.setCustomValidity('Удалите лишние ' + (valueLength - MIN_NAME_LENGTH) +' симв.');
+    userNameInput.setCustomValidity('Удалите лишние ' + (valueLength - MIN_NAME_LENGTH) + ' симв.');
   } else {
     userNameInput.setCustomValidity('');
   }
 });
 
-var colorizeItem = function(element, arr, input) {
+var colorizeItem = function (element, arr, input) {
   var color = randomData(arr);
   if (element.hasAttribute('xlink:href')) {
     element.style.fill = color;
-  }
-  else {
+  } else {
     element.style.background = color;
   }
   document.querySelector(input).value = color;
-}
+};
 
 var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
 
